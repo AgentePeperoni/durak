@@ -33,14 +33,17 @@ public class GameManager : MonoBehaviour
     [Space]
     [SerializeField]
     private int _cardsPerHand;
+    [SerializeField]
+    private AudioClip _discardSound;
 
     private HandController _attackingHand;
     private HandController _defendingHand;
 
     private bool _successfulDefense;
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitForSeconds(1f);
         InitializeGame();
     }
 
@@ -74,7 +77,7 @@ public class GameManager : MonoBehaviour
         {
             _attackingHand.Container.Lock();
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.4f);
             CardController passedCard = _oponentAI.MakeMove(null, _deck.TrumpSuit);
             _transferManager.InstantTransfer(_attackingHand.Container, passedCard, _table.Container);
         }
@@ -91,7 +94,7 @@ public class GameManager : MonoBehaviour
         {
             _defendingHand.Container.Lock();
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.4f);
             CardController passedCard = _oponentAI.MakeMove(_table.AttackCard, _deck.TrumpSuit);
             if (passedCard == null)
                 GiveUp();
@@ -119,6 +122,7 @@ public class GameManager : MonoBehaviour
             defCard.Data.runtimePriority > atkCard.Data.runtimePriority)
         {
             yield return new WaitForSeconds(2);
+            AudioSource.PlayClipAtPoint(_discardSound, transform.position, 2f);
 
             _table.Container.RemoveCard(atkCard);
             _table.Container.RemoveCard(defCard);
@@ -165,13 +169,19 @@ public class GameManager : MonoBehaviour
             {
                 EndGame("Ничья!");
             }
-            if (_attackingHand.Container.Cards.Count <= 0)
+            else if (_attackingHand.Container.Cards.Count <= 0)
             {
-                EndGame("Вы победили!");
+                if (_oponentAI.Hand.Equals(_attackingHand))
+                    EndGame("Противник победил!");
+                else
+                    EndGame("Вы победили!");
             }
             else if (_defendingHand.Container.Cards.Count <= 0)
             {
-                EndGame("Противник победил!");
+                if (_oponentAI.Hand.Equals(_defendingHand))
+                    EndGame("Противник победил!");
+                else
+                    EndGame("Вы победили!");
             }
             else
                 NextTurn();

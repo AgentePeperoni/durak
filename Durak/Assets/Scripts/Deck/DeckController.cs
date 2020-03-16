@@ -14,6 +14,7 @@ public class DeckController : MonoBehaviour
 
     public DeckContainer Container { get; protected set; }
     public DeckGraphics Graphics { get; protected set; }
+    public DeckSounds Sounds { get; protected set; }
     public CardSuit TrumpSuit { get; protected set; }
 
     protected virtual void Awake()
@@ -31,6 +32,7 @@ public class DeckController : MonoBehaviour
     {
         Container = GetComponent<DeckContainer>() ?? GetComponentInChildren<DeckContainer>();
         Graphics = GetComponent<DeckGraphics>() ?? GetComponentInChildren<DeckGraphics>();
+        Sounds = GetComponent<DeckSounds>() ?? GetComponentInChildren<DeckSounds>();
     }
 
     protected virtual void InitializeComponents()
@@ -50,11 +52,19 @@ public class DeckController : MonoBehaviour
             sortingLayer += 2;
         }
 
+        Sounds?.ShuffleSound();
         Shuffle(10);
+
         PickTrump();
         OrderSortingLayers();
 
-        Graphics.ShowSuit(TrumpSuit);
+        if (Graphics != null)
+        {
+            Graphics.ShowSuit(TrumpSuit);
+            Graphics.SetCardsCount(Container.Cards.Count);
+
+            Container.OnCardCountChanged += Graphics.SetCardsCount;
+        }
     }
 
     protected virtual void PickTrump()
@@ -104,6 +114,7 @@ public class DeckController : MonoBehaviour
             CardController drawnCard = Container.Cards[Container.Cards.Count - 1];
             Container.RemoveCard(drawnCard);
 
+            drawnCard.Sounds?.DrawSound();
             return drawnCard;
         }
 

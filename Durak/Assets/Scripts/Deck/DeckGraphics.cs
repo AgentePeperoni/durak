@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class DeckGraphics : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class DeckGraphics : MonoBehaviour
     protected GameObject _heartGraphics;
     [SerializeField]
     protected GameObject _spadeGraphics;
+
+    [SerializeField]
+    protected Text _cardsLeftText;
     
     protected virtual void Start()
     {
@@ -48,5 +52,10 @@ public class DeckGraphics : MonoBehaviour
                 _spadeGraphics.SetActive(true);
                 break;
         }
+    }
+
+    public virtual void SetCardsCount(int count)
+    {
+        _cardsLeftText.text = count.ToString();
     }
 }

@@ -16,6 +16,7 @@ public class CardController : MonoBehaviour
         }
     }
     public CardGraphics Graphics { get; protected set; }
+    public CardSounds Sounds { get; protected set; }
     public CardInteraction Interaction { get; protected set; }
     public CardMovement Movement { get; protected set; }
     public CardCollision Collision { get; protected set; }
@@ -40,6 +41,7 @@ public class CardController : MonoBehaviour
         Interaction = GetComponent<CardInteraction>() ?? GetComponentInChildren<CardInteraction>();
         Movement = GetComponent<CardMovement>() ?? GetComponentInChildren<CardMovement>();
         Collision = GetComponent<CardCollision>() ?? GetComponentInChildren<CardCollision>();
+        Sounds = GetComponent<CardSounds>() ?? GetComponentInChildren<CardSounds>();
     }
 
     protected virtual void InitializeComponents()
@@ -52,6 +54,12 @@ public class CardController : MonoBehaviour
             Interaction.OnMouseDownOccur += (r) => Movement.MouseDown();
             Interaction.OnMouseDragOccur += (r) => Movement.MouseDrag();
             Interaction.OnMouseUpOccur += (r) => Movement.MouseUp();
+        }
+
+        if (Sounds != null)
+        {
+            Interaction.OnMouseDownOccur += (c) => Sounds.PickSound();
+            Interaction.OnMouseUpOccur += (c) => Sounds.DropSound();
         }
 
         Collision?.Initialize(this);

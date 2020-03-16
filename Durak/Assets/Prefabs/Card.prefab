@@ -100,7 +100,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -840140221
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -181,7 +181,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -840140221
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 7201252062884630591}
   - component: {fileID: 7201252062884630588}
   - component: {fileID: 7155574566512709456}
+  - component: {fileID: 1951892256367176626}
   m_Layer: 8
   m_Name: Card
   m_TagString: Untagged
@@ -321,3 +322,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012ef1cac9bcc48499a6d1089c787edd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1951892256367176626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7201252062884630722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5396209d4ad26498028c4c8caf7e03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _volume: 1
+  _drawSound: {fileID: 8300000, guid: ceb6dbc4a39f4344bb5f2a38fbcc06ea, type: 3}
+  _pickSound: {fileID: 8300000, guid: 4df7e5a01cf2aa54b91373d71f4343c6, type: 3}
+  _dropSound: {fileID: 8300000, guid: 0710eadd4f75c1749b515f5ef9823803, type: 3}
