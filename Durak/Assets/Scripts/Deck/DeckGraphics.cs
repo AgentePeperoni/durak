@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class DeckGraphics : MonoBehaviour
 {
+    #region Serialized fields
     [SerializeField]
     protected GameObject _clubGraphics;
     [SerializeField]
@@ -14,7 +15,8 @@ public class DeckGraphics : MonoBehaviour
 
     [SerializeField]
     protected Text _cardsLeftText;
-    
+    #endregion
+
     protected virtual void Start()
     {
         _clubGraphics.SetActive(false);
@@ -23,6 +25,7 @@ public class DeckGraphics : MonoBehaviour
         _spadeGraphics.SetActive(false);
     }
 
+    #region Public methods
     public virtual void ShowSuit(CardSuit suit)
     {
         switch (suit)
@@ -58,4 +61,5 @@ public class DeckGraphics : MonoBehaviour
     {
         _cardsLeftText.text = count.ToString();
     }
+    #endregion
 }

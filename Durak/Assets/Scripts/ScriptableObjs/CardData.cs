@@ -26,6 +26,7 @@ public class CardData : ScriptableObject, ISerializationCallbackReceiver
     public Sprite runtimeBack;
     #endregion
 
+    #region Public methods
     public void Reset()
     {
         runtimePriority = _priority;
@@ -36,6 +37,7 @@ public class CardData : ScriptableObject, ISerializationCallbackReceiver
 
     public virtual void OnAfterDeserialize() => Reset();
     public virtual void OnBeforeSerialize() { }
+    #endregion
 }
 
 public enum CardSuit

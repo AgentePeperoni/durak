@@ -11,8 +11,10 @@ public class DeckData : ScriptableObject, ISerializationCallbackReceiver
     [NonSerialized]
     public List<CardData> runtimeCards;
 
+    #region Public methods
     public void Reset() => runtimeCards = new List<CardData>(_cards);
 
     public virtual void OnAfterDeserialize() => Reset();
     public virtual void OnBeforeSerialize() { }
+    #endregion
 }

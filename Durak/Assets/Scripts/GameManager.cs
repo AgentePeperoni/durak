@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameState GameState { get; protected set; }
 
+    #region Serialized fields
     [SerializeField]
     private TransferManager _transferManager;
     [SerializeField]
@@ -35,9 +36,12 @@ public class GameManager : MonoBehaviour
     private int _cardsPerHand;
     [SerializeField]
     private AudioClip _discardSound;
+    #endregion
 
+    #region Private fields
     private HandController _attackingHand;
     private HandController _defendingHand;
+    #endregion
 
     private bool _successfulDefense;
 
@@ -47,6 +51,7 @@ public class GameManager : MonoBehaviour
         InitializeGame();
     }
 
+    #region Private methods
     private void InitializeGame()
     {
         GameState = GameState.Begin;
@@ -211,7 +216,9 @@ public class GameManager : MonoBehaviour
         _endGameMenu.SetActive(true);
         _endGameText.text = message;
     }
+    #endregion
 
+    #region Public methods
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -234,6 +241,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(Draw());
         }
     }
+    #endregion
 }
 
 public enum GameState

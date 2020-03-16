@@ -2,6 +2,7 @@
 
 public class CardSounds : MonoBehaviour
 {
+    #region Serialized fields
     [Range(0, 1f)]
     [SerializeField]
     protected float _volume;
@@ -13,7 +14,9 @@ public class CardSounds : MonoBehaviour
     protected AudioClip _pickSound;
     [SerializeField]
     protected AudioClip _dropSound;
+    #endregion
 
+    #region Public methods
     public virtual void DrawSound()
     {
         AudioSource.PlayClipAtPoint(_drawSound, transform.position, _volume);
@@ -28,4 +31,5 @@ public class CardSounds : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(_dropSound, transform.position, _volume);
     }
+    #endregion
 }

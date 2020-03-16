@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class TableContainer : MonoBehaviour, IContainCards
 {
+    #region Events
     public event Action<CardController> OnCardAdded;
     public event Action<CardController> OnCardRemoved;
+    #endregion
 
     public List<CardController> Cards { get; protected set; }
 
@@ -14,6 +16,7 @@ public class TableContainer : MonoBehaviour, IContainCards
         Cards = new List<CardController>();
     }
 
+    #region Public methods
     public void AddCard(CardController card)
     {
         if (!Cards.Contains(card))
@@ -35,4 +38,5 @@ public class TableContainer : MonoBehaviour, IContainCards
             OnCardRemoved?.Invoke(card);
         }
     }
+    #endregion
 }

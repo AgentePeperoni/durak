@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class DeckController : MonoBehaviour
 {
+    #region Serialized fields
     [SerializeField]
     protected DeckData _data;
     [SerializeField]
@@ -11,12 +12,16 @@ public class DeckController : MonoBehaviour
     [Space]
     [SerializeField]
     protected GameObject _cardPrefab;
+    #endregion
 
+    #region Public properties
     public DeckContainer Container { get; protected set; }
     public DeckGraphics Graphics { get; protected set; }
     public DeckSounds Sounds { get; protected set; }
     public CardSuit TrumpSuit { get; protected set; }
+    #endregion
 
+    #region Protected MonoBehaviour methods
     protected virtual void Awake()
     {
         FindComponents();
@@ -26,6 +31,7 @@ public class DeckController : MonoBehaviour
     {
         InitializeComponents();
     }
+    #endregion
 
     #region Protected methods
     protected virtual void FindComponents()
@@ -92,6 +98,7 @@ public class DeckController : MonoBehaviour
     }
     #endregion
 
+    #region Public methods
     public virtual void Shuffle(int count)
     {
         for (int c = 0; c < count; ++c)
@@ -120,4 +127,5 @@ public class DeckController : MonoBehaviour
 
         return null;
     }
+    #endregion
 }

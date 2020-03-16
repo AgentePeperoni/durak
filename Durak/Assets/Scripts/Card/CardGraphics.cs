@@ -13,7 +13,8 @@ public class CardGraphics : MonoBehaviour
     public bool FacingUp { get; protected set; }
     public bool IsVisible { get; protected set; }
     #endregion
-    
+
+    #region Protected MonoBehaviour methods
     protected virtual void OnValidate()
     {
         if (_faceRender == null)
@@ -26,6 +27,7 @@ public class CardGraphics : MonoBehaviour
     {
         IsVisible = true;
     }
+    #endregion
 
     #region Public methods
     public virtual void Initialize(CardData data)

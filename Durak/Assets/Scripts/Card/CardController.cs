@@ -66,6 +66,7 @@ public class CardController : MonoBehaviour
     }
     #endregion
 
+    #region Public methods
     public virtual void UpdateComponents()
     {
         Graphics?.UpdateGraphics(_data);
@@ -81,4 +82,5 @@ public class CardController : MonoBehaviour
     {
         Interaction?.SetActive(true);
     }
+    #endregion
 }

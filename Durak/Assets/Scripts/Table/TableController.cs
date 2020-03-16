@@ -3,19 +3,26 @@ using UnityEngine;
 
 public class TableController : MonoBehaviour
 {
+    #region Events
     public event Action OnAttackDone;
     public event Action OnDefenseDone;
+    #endregion
 
+    #region Serialized fields
     [SerializeField]
     protected Transform _attackingCardRoot;
     [SerializeField]
     protected Transform _defendingCardRoot;
+    #endregion
 
+    #region Public properties
     public TableContainer Container { get; protected set; }
 
     public CardController AttackCard { get; protected set; }
     public CardController DefendCard { get; protected set; }
+    #endregion
 
+    #region Protected MonoBehaviour methods
     protected virtual void Awake()
     {
         FindComponents();   
@@ -25,6 +32,7 @@ public class TableController : MonoBehaviour
     {
         InitializeComponents();
     }
+    #endregion
 
     #region Protected methods
     protected virtual void FindComponents()

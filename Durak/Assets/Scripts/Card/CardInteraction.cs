@@ -19,19 +19,6 @@ public class CardInteraction : MonoBehaviour
     protected CardController _reference;
     #endregion
 
-    public virtual void Initialize(CardController reference, Vector2 extents)
-    {
-        _reference = reference;
-        UpdateInteraction(extents);
-    }
-
-    public virtual void UpdateInteraction(Vector2 extents)
-    {
-        _collider2D.size = extents * 2;
-    }
-
-    public virtual void SetActive(bool value) => IsActive = value;
-
     #region Protected MonoBehaviour Methods
     protected virtual void Awake()
     {
@@ -68,5 +55,20 @@ public class CardInteraction : MonoBehaviour
         if (IsActive)
             OnMouseExitOccur?.Invoke(_reference);
     }
+    #endregion
+
+    #region Public methods
+    public virtual void Initialize(CardController reference, Vector2 extents)
+    {
+        _reference = reference;
+        UpdateInteraction(extents);
+    }
+
+    public virtual void UpdateInteraction(Vector2 extents)
+    {
+        _collider2D.size = extents * 2;
+    }
+
+    public virtual void SetActive(bool value) => IsActive = value;
     #endregion
 }

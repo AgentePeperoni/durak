@@ -5,8 +5,10 @@ public class HandController : MonoBehaviour
 {
     public event Action<IContainCards, CardController> OnCardInteracted;
 
+    #region Public properties
     public HandContainer Container { get; protected set; }
     public HandGraphics Graphics { get; protected set; }
+    #endregion
 
     #region Protected MonoBehaviour methods
     protected virtual void Awake()

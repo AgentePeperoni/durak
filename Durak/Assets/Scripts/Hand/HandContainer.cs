@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class HandContainer : MonoBehaviour, IContainCards
 {
+    #region Events
     public event Action<CardController> OnCardInteracted;
     public event Action<bool> OnContainerLockStateChanged;
+    #endregion
 
+    #region Serialized fields
     [SerializeField]
     protected Transform _root;
     [SerializeField]
     protected float _cardSpacing;
+    #endregion
 
+    #region Public properties
     public List<CardController> Cards { get; protected set; }
     public bool Locked { get; protected set; }
     public bool HideCards { get; set; }
+    #endregion
 
     protected virtual void Awake()
     {
@@ -31,6 +37,7 @@ public class HandContainer : MonoBehaviour, IContainCards
         OnCardInteracted?.Invoke(card);
     }
 
+    #region Public methods
     public virtual void AddCard(CardController card)
     {
         if (!Cards.Contains(card) && card != null)
@@ -101,4 +108,5 @@ public class HandContainer : MonoBehaviour, IContainCards
         Locked = false;
         OnContainerLockStateChanged?.Invoke(Locked);
     }
+    #endregion
 }

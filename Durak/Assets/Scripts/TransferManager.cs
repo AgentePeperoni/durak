@@ -25,6 +25,7 @@ public class TransferManager : MonoBehaviour
         Transfers = new List<Transfer>();
     }
 
+    #region Public methods
     public void InstantTransfer(IContainCards sender, CardController card, IContainCards receiver)
     {
         sender.RemoveCard(card);
@@ -72,4 +73,5 @@ public class TransferManager : MonoBehaviour
 
         transfer.receiver = null;
     }
+    #endregion
 }
