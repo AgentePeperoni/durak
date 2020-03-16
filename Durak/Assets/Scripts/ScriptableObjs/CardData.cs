@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Card", menuName = "Objects/Card", order = 2)]
 public class CardData : ScriptableObject, ISerializationCallbackReceiver
 {
+    #region Serialized fields
     [SerializeField]
     protected int _priority;
     [SerializeField]
@@ -12,7 +13,9 @@ public class CardData : ScriptableObject, ISerializationCallbackReceiver
     protected Sprite _face;
     [SerializeField]
     protected Sprite _back;
+    #endregion
 
+    #region Public fields
     [NonSerialized]
     public int runtimePriority;
     [NonSerialized]
@@ -21,6 +24,7 @@ public class CardData : ScriptableObject, ISerializationCallbackReceiver
     public Sprite runtimeFace;
     [NonSerialized]
     public Sprite runtimeBack;
+    #endregion
 
     public void Reset()
     {
