@@ -1007,7 +1007,7 @@ MonoBehaviour:
   _endGameMenu: {fileID: 1185748282}
   _endGameText: {fileID: 1013278269}
   _cardsPerHand: 6
-  _discardSound: {fileID: 8300000, guid: a4d3e5498be34e449a6657beb4357b15, type: 3}
+  _discardSound: {fileID: 8300000, guid: 5bbf0b8df4c709d42bbd034c1fd8bafc, type: 3}
 --- !u!1 &920890424
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,7 +1269,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.5, y: -1}
+  m_AnchoredPosition: {x: -2.5, y: -1.25}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1042336711
@@ -1639,6 +1639,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AI Hand
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058054175118322853, guid: fe870870578b62b4483d8c1bc2477f47,
+        type: 3}
+      propertyPath: _cardSpacing
+      value: 1.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe870870578b62b4483d8c1bc2477f47, type: 3}
@@ -2440,7 +2445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb57be5bab0e01244ae5040ffdbd7169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 5660fe2a7a3e77946a66b66a95b67e23, type: 2}
+  _data: {fileID: 11400000, guid: 33a27a264c29e7a469434c6318a411a4, type: 2}
   _trumpRoot: {fileID: 1637628185}
   _cardPrefab: {fileID: 7201252062884630722, guid: 3028168b3bccc3d4ca1bf26b6405946f,
     type: 3}
@@ -2703,6 +2708,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player Hand
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058054175118322853, guid: fe870870578b62b4483d8c1bc2477f47,
+        type: 3}
+      propertyPath: _cardSpacing
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3058054175366272502, guid: fe870870578b62b4483d8c1bc2477f47,
         type: 3}

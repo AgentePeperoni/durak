@@ -335,6 +335,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _volume: 1
-  _drawSound: {fileID: 8300000, guid: ceb6dbc4a39f4344bb5f2a38fbcc06ea, type: 3}
+  _drawSound: {fileID: 8300000, guid: 5bccdc7e1d91efa43a815adf8f14ca65, type: 3}
   _pickSound: {fileID: 8300000, guid: 4df7e5a01cf2aa54b91373d71f4343c6, type: 3}
-  _dropSound: {fileID: 8300000, guid: 0710eadd4f75c1749b515f5ef9823803, type: 3}
+  _dropSound: {fileID: 8300000, guid: a9441b0896f362c40a1b012baeaf3ce6, type: 3}
