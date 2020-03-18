@@ -6,7 +6,7 @@ public class DeckContainer : MonoBehaviour, IContainCards
 {
     public event Action<int> OnCardCountChanged;
 
-    public List<CardController> Cards { get; protected set; }
+    public List<CardController> Cards { get; private set; }
 
     protected virtual void Awake()
     {
@@ -14,7 +14,7 @@ public class DeckContainer : MonoBehaviour, IContainCards
     }
 
     #region Public methods
-    public virtual void AddCard(CardController card)
+    public void AddCard(CardController card)
     {
         if (!Cards.Contains(card))
         {
@@ -23,7 +23,7 @@ public class DeckContainer : MonoBehaviour, IContainCards
         }
     }
 
-    public virtual void RemoveCard(CardController card)
+    public void RemoveCard(CardController card)
     {
         if (Cards.Remove(card))
             OnCardCountChanged?.Invoke(Cards.Count);

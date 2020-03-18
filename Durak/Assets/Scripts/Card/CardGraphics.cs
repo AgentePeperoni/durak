@@ -4,9 +4,9 @@ public class CardGraphics : MonoBehaviour
 {
     #region Serialized fields
     [SerializeField]
-    protected SpriteRenderer _faceRender;
+    private SpriteRenderer _faceRender;
     [SerializeField]
-    protected SpriteRenderer _backRender;
+    private SpriteRenderer _backRender;
     #endregion
 
     #region Public properties
@@ -14,8 +14,8 @@ public class CardGraphics : MonoBehaviour
     public bool IsVisible { get; protected set; }
     #endregion
 
-    #region Protected MonoBehaviour methods
-    protected virtual void OnValidate()
+    #region Private MonoBehaviour methods
+    private void OnValidate()
     {
         if (_faceRender == null)
             Debug.LogWarning($"SpriteRenderer лицевой стороны карты на объекте \"{gameObject.name}\" не задан!");
@@ -23,25 +23,25 @@ public class CardGraphics : MonoBehaviour
             Debug.LogWarning($"SpriteRenderer задней стороны карты на объекте \"{gameObject.name}\" не задан!");
     }
 
-    protected virtual void Awake()
+    private void Awake()
     {
         IsVisible = true;
     }
     #endregion
 
     #region Public methods
-    public virtual void Initialize(CardData data)
+    public void Initialize(CardData data)
     {
         UpdateGraphics(data);
     }
 
-    public virtual void UpdateGraphics(CardData data)
+    public void UpdateGraphics(CardData data)
     {
         _faceRender.sprite = data.runtimeFace;
         _backRender.sprite = data.runtimeBack;
     }
 
-    public virtual void Show()
+    public void Show()
     {
         IsVisible = true;
 
@@ -51,7 +51,7 @@ public class CardGraphics : MonoBehaviour
             FaceDown();
     }
 
-    public virtual void Hide()
+    public void Hide()
     {
         IsVisible = false;
 
@@ -59,7 +59,7 @@ public class CardGraphics : MonoBehaviour
         _backRender.enabled = IsVisible;
     }
 
-    public virtual void FaceUp()
+    public void FaceUp()
     {
         if (IsVisible)
         {
@@ -70,7 +70,7 @@ public class CardGraphics : MonoBehaviour
         FacingUp = true;
     }
 
-    public virtual void FaceDown()
+    public void FaceDown()
     {
         if (IsVisible)
         {
@@ -81,12 +81,12 @@ public class CardGraphics : MonoBehaviour
         FacingUp = false;
     }
 
-    public virtual void SetSortingLayer(int faceLayer)
+    public void SetSortingLayer(int faceLayer)
     {
         _faceRender.sortingOrder = faceLayer;
         _backRender.sortingOrder = faceLayer - 1;
     }
 
-    public virtual int GetSortingLayer() => _faceRender.sortingOrder;
+    public int GetSortingLayer() => _faceRender.sortingOrder;
     #endregion
 }

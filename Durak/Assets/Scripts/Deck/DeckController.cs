@@ -5,43 +5,43 @@ public class DeckController : MonoBehaviour
 {
     #region Serialized fields
     [SerializeField]
-    protected DeckData _data;
+    private DeckData _data;
     [SerializeField]
-    protected Transform _trumpRoot;
+    private Transform _trumpRoot;
 
     [Space]
     [SerializeField]
-    protected GameObject _cardPrefab;
+    private GameObject _cardPrefab;
     #endregion
 
     #region Public properties
-    public DeckContainer Container { get; protected set; }
-    public DeckGraphics Graphics { get; protected set; }
-    public DeckSounds Sounds { get; protected set; }
-    public CardSuit TrumpSuit { get; protected set; }
+    public DeckContainer Container { get; private set; }
+    public DeckGraphics Graphics { get; private set; }
+    public DeckSounds Sounds { get; private set; }
+    public CardSuit TrumpSuit { get; private set; }
     #endregion
 
-    #region Protected MonoBehaviour methods
-    protected virtual void Awake()
+    #region Private MonoBehaviour methods
+    private void Awake()
     {
         FindComponents();
     }
 
-    protected virtual void Start()
+    private void Start()
     {
         InitializeComponents();
     }
     #endregion
 
     #region Protected methods
-    protected virtual void FindComponents()
+    private void FindComponents()
     {
         Container = GetComponent<DeckContainer>() ?? GetComponentInChildren<DeckContainer>();
         Graphics = GetComponent<DeckGraphics>() ?? GetComponentInChildren<DeckGraphics>();
         Sounds = GetComponent<DeckSounds>() ?? GetComponentInChildren<DeckSounds>();
     }
 
-    protected virtual void InitializeComponents()
+    private void InitializeComponents()
     {
         int sortingLayer = -_data.runtimeCards.Count * 2;
         foreach (CardData data in _data.runtimeCards)
@@ -73,7 +73,7 @@ public class DeckController : MonoBehaviour
         }
     }
 
-    protected virtual void PickTrump()
+    private void PickTrump()
     {
         CardController trumpCard = Container.Cards[0];
 
@@ -87,7 +87,7 @@ public class DeckController : MonoBehaviour
             trump.Data.runtimePriority += highestPriority;
     }
 
-    protected virtual void OrderSortingLayers()
+    private void OrderSortingLayers()
     {
         int sortingLayer = -_data.runtimeCards.Count * 2;
         foreach (CardController card in Container.Cards)
@@ -99,7 +99,7 @@ public class DeckController : MonoBehaviour
     #endregion
 
     #region Public methods
-    public virtual void Shuffle(int count)
+    public void Shuffle(int count)
     {
         for (int c = 0; c < count; ++c)
         {
@@ -114,7 +114,7 @@ public class DeckController : MonoBehaviour
         }
     }
 
-    public virtual CardController Draw()
+    public CardController Draw()
     {
         if (Container.Cards.Count > 0)
         {

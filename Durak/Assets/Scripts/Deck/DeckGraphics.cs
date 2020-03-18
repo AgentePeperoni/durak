@@ -5,19 +5,19 @@ public class DeckGraphics : MonoBehaviour
 {
     #region Serialized fields
     [SerializeField]
-    protected GameObject _clubGraphics;
+    private GameObject _clubGraphics;
     [SerializeField]
-    protected GameObject _diamondGraphics;
+    private GameObject _diamondGraphics;
     [SerializeField]
-    protected GameObject _heartGraphics;
+    private GameObject _heartGraphics;
     [SerializeField]
-    protected GameObject _spadeGraphics;
+    private GameObject _spadeGraphics;
 
     [SerializeField]
-    protected Text _cardsLeftText;
+    private Text _cardsLeftText;
     #endregion
 
-    protected virtual void Start()
+    private void Start()
     {
         _clubGraphics.SetActive(false);
         _diamondGraphics.SetActive(false);
@@ -26,7 +26,7 @@ public class DeckGraphics : MonoBehaviour
     }
 
     #region Public methods
-    public virtual void ShowSuit(CardSuit suit)
+    public void ShowSuit(CardSuit suit)
     {
         switch (suit)
         {
@@ -57,7 +57,7 @@ public class DeckGraphics : MonoBehaviour
         }
     }
 
-    public virtual void SetCardsCount(int count)
+    public void SetCardsCount(int count)
     {
         _cardsLeftText.text = count.ToString();
     }

@@ -11,18 +11,18 @@ public class HandContainer : MonoBehaviour, IContainCards
 
     #region Serialized fields
     [SerializeField]
-    protected Transform _root;
+    private Transform _root;
     [SerializeField]
-    protected float _cardSpacing;
+    private float _cardSpacing;
     #endregion
 
     #region Public properties
-    public List<CardController> Cards { get; protected set; }
-    public bool Locked { get; protected set; }
+    public List<CardController> Cards { get; private set; }
+    public bool Locked { get; private set; }
     public bool HideCards { get; set; }
     #endregion
 
-    protected virtual void Awake()
+    private void Awake()
     {
         Cards = new List<CardController>();
 
@@ -32,13 +32,13 @@ public class HandContainer : MonoBehaviour, IContainCards
         Locked = false;
     }
 
-    protected void OnCardInteractedWrapper(CardController card)
+    private void OnCardInteractedWrapper(CardController card)
     {
         OnCardInteracted?.Invoke(card);
     }
 
     #region Public methods
-    public virtual void AddCard(CardController card)
+    public void AddCard(CardController card)
     {
         if (!Cards.Contains(card) && card != null)
         {
@@ -59,7 +59,7 @@ public class HandContainer : MonoBehaviour, IContainCards
         }
     }
 
-    public virtual void RemoveCard(CardController card)
+    public void RemoveCard(CardController card)
     {
         if (card != null)
         {
@@ -74,7 +74,7 @@ public class HandContainer : MonoBehaviour, IContainCards
         }
     }
 
-    public virtual void ArrangeCards()
+    public void ArrangeCards()
     {
         float spacingPos = -_cardSpacing * Mathf.Floor(Cards.Count / 2f);
 
@@ -91,7 +91,7 @@ public class HandContainer : MonoBehaviour, IContainCards
         }
     }
 
-    public virtual void Lock()
+    public void Lock()
     {
         foreach (CardController c in Cards)
             c.Lock();
@@ -100,7 +100,7 @@ public class HandContainer : MonoBehaviour, IContainCards
         OnContainerLockStateChanged?.Invoke(Locked);
     }
 
-    public virtual void Unlock()
+    public void Unlock()
     {
         foreach (CardController c in Cards)
             c.Unlock();

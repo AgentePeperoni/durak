@@ -10,37 +10,37 @@ public class TableController : MonoBehaviour
 
     #region Serialized fields
     [SerializeField]
-    protected Transform _attackingCardRoot;
+    private Transform _attackingCardRoot;
     [SerializeField]
-    protected Transform _defendingCardRoot;
+    private Transform _defendingCardRoot;
     #endregion
 
     #region Public properties
-    public TableContainer Container { get; protected set; }
+    public TableContainer Container { get; private set; }
 
-    public CardController AttackCard { get; protected set; }
-    public CardController DefendCard { get; protected set; }
+    public CardController AttackCard { get; private set; }
+    public CardController DefendCard { get; private set; }
     #endregion
 
-    #region Protected MonoBehaviour methods
-    protected virtual void Awake()
+    #region Private MonoBehaviour methods
+    private void Awake()
     {
         FindComponents();   
     }
 
-    protected virtual void Start()
+    private void Start()
     {
         InitializeComponents();
     }
     #endregion
 
-    #region Protected methods
-    protected virtual void FindComponents()
+    #region Private methods
+    private void FindComponents()
     {
         Container = GetComponent<TableContainer>() ?? GetComponentInChildren<TableContainer>();
     }
 
-    protected virtual void InitializeComponents()
+    private void InitializeComponents()
     {
         if (Container != null)
         {
@@ -49,7 +49,7 @@ public class TableController : MonoBehaviour
         }
     }
 
-    protected virtual void ManageAddedCard(CardController card)
+    private void ManageAddedCard(CardController card)
     {
         if (GameManager.GameState == GameState.Attack)
         {
@@ -67,7 +67,7 @@ public class TableController : MonoBehaviour
         }
     }
 
-    protected virtual void ManageRemovedCard(CardController card)
+    private void ManageRemovedCard(CardController card)
     {
         if (card.Equals(AttackCard))
             AttackCard = null;

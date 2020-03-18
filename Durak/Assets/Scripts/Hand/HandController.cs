@@ -6,30 +6,30 @@ public class HandController : MonoBehaviour
     public event Action<IContainCards, CardController> OnCardInteracted;
 
     #region Public properties
-    public HandContainer Container { get; protected set; }
-    public HandGraphics Graphics { get; protected set; }
+    public HandContainer Container { get; private set; }
+    public HandGraphics Graphics { get; private set; }
     #endregion
 
-    #region Protected MonoBehaviour methods
-    protected virtual void Awake()
+    #region Private MonoBehaviour methods
+    private void Awake()
     {
         FindComponents();
     }
 
-    protected virtual void Start()
+    private void Start()
     {
         InitializeComponents();
     }
     #endregion
 
-    #region Protected methods
-    protected virtual void FindComponents()
+    #region Private methods
+    private void FindComponents()
     {
         Container = GetComponent<HandContainer>() ?? GetComponentInChildren<HandContainer>();
         Graphics = GetComponent<HandGraphics>() ?? GetComponentInChildren<HandGraphics>();
     }
 
-    protected virtual void InitializeComponents()
+    private void InitializeComponents()
     {
         if (Container != null)
         {
@@ -38,12 +38,12 @@ public class HandController : MonoBehaviour
         }
     }
 
-    protected virtual void OnCardInteractedWrapper(CardController card)
+    private void OnCardInteractedWrapper(CardController card)
     {
         OnCardInteracted?.Invoke(Container, card);
     }
 
-    protected virtual void OnLockStateChanged(bool value)
+    private void OnLockStateChanged(bool value)
     {
         if (value)
             Graphics.HideActiveGraphics();

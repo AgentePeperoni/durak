@@ -11,7 +11,7 @@ public class TableContainer : MonoBehaviour, IContainCards
 
     public List<CardController> Cards { get; protected set; }
 
-    protected virtual void Awake()
+    private void Awake()
     {
         Cards = new List<CardController>();
     }

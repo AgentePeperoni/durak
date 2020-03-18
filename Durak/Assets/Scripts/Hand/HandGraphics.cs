@@ -3,15 +3,15 @@
 public class HandGraphics : MonoBehaviour
 {
     [SerializeField]
-    protected GameObject _activeGraphics;
+    private GameObject _activeGraphics;
 
     #region Public methods
-    public virtual void ShowActiveGraphics()
+    public void ShowActiveGraphics()
     {
         _activeGraphics.SetActive(true);
     }
 
-    public virtual void HideActiveGraphics()
+    public void HideActiveGraphics()
     {
         _activeGraphics.SetActive(false);
     }

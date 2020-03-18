@@ -3,7 +3,7 @@
 public class CardController : MonoBehaviour
 {
     [SerializeField]
-    protected CardData _data;
+    private CardData _data;
 
     #region Public properties
     public CardData Data
@@ -15,27 +15,27 @@ public class CardController : MonoBehaviour
             UpdateComponents();
         }
     }
-    public CardGraphics Graphics { get; protected set; }
-    public CardSounds Sounds { get; protected set; }
-    public CardInteraction Interaction { get; protected set; }
-    public CardMovement Movement { get; protected set; }
-    public CardCollision Collision { get; protected set; }
+    public CardGraphics Graphics { get; private set; }
+    public CardSounds Sounds { get; private set; }
+    public CardInteraction Interaction { get; private set; }
+    public CardMovement Movement { get; private set; }
+    public CardCollision Collision { get; private set; }
     #endregion
 
-    #region Protected MonoBehaviour methods
-    protected virtual void Awake()
+    #region Private MonoBehaviour methods
+    private void Awake()
     {
         FindComponents();
     }
 
-    protected virtual void Start()
+    private void Start()
     {
         InitializeComponents();
     }
     #endregion
 
-    #region Protected methods
-    protected virtual void FindComponents()
+    #region Private methods
+    private void FindComponents()
     {
         Graphics = GetComponent<CardGraphics>() ?? GetComponentInChildren<CardGraphics>();
         Interaction = GetComponent<CardInteraction>() ?? GetComponentInChildren<CardInteraction>();
@@ -44,7 +44,7 @@ public class CardController : MonoBehaviour
         Sounds = GetComponent<CardSounds>() ?? GetComponentInChildren<CardSounds>();
     }
 
-    protected virtual void InitializeComponents()
+    private void InitializeComponents()
     {
         Graphics?.Initialize(_data);
         Interaction?.Initialize(this, _data.runtimeFace.bounds.extents);
@@ -67,18 +67,18 @@ public class CardController : MonoBehaviour
     #endregion
 
     #region Public methods
-    public virtual void UpdateComponents()
+    public void UpdateComponents()
     {
         Graphics?.UpdateGraphics(_data);
         Interaction?.UpdateInteraction(_data.runtimeFace.bounds.extents);
     }
 
-    public virtual void Lock()
+    public void Lock()
     {
         Interaction?.SetActive(false);
     }
 
-    public virtual void Unlock()
+    public void Unlock()
     {
         Interaction?.SetActive(true);
     }

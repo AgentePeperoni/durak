@@ -5,23 +5,23 @@ using UnityEngine;
 public class AIController : MonoBehaviour
 {
     [SerializeField]
-    protected HandController _hand;
+    private HandController _hand;
 
     public HandController Hand => _hand;
 
-    protected virtual void Start()
+    private void Start()
     {
         _hand.Container.HideCards = true;
     }
 
-    protected virtual List<CardController> GetOrderedSuitableCards(CardSuit suit, int minPriority)
+    private List<CardController> GetOrderedSuitableCards(CardSuit suit, int minPriority)
     {
         return _hand.Container.Cards
             .Where(c => c.Data.runtimeSuit == suit && c.Data.runtimePriority > minPriority)
             .OrderBy(c => c.Data.runtimePriority).ToList();
     }
 
-    public virtual CardController MakeMove(CardController atkCard, CardSuit trumpSuit)
+    public CardController MakeMove(CardController atkCard, CardSuit trumpSuit)
     {
         CardController result = null;
 
